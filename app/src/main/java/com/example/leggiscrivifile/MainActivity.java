@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     TextView txtNomeFile;
     Button btnLeggi, btnScrivi;
+    Gestore gest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
