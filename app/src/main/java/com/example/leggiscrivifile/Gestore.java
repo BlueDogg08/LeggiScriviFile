@@ -11,17 +11,18 @@ import java.io.InputStreamReader;
 
 public class Gestore {
     public String leggiFile(String nomeFile, Context c){
-        StringBuilder sb = new StringBuilder();
-        try{
+        StringBuilder sb = new StringBuilder(); //E' una classe che viene utilizzata per creare oggetti stringa
+        try{ //ha la funzione di gestire le eccezioni. Si racchiude in un blocco try l'eventuale eccezione seguita da uno o più blocchi catch contenenti le istruzioni da eseguire in corrispondenza dell'eccezione lanciata
             BufferedReader fileDaLeggere = new BufferedReader(new InputStreamReader(c.openFileInput(nomeFile)));
+            //InputStream è il metodo per ottenere informazioni da una risorsa. Cattura i dati byte per byte senza eseguire alcun tipo di traduzione
             String daRestituire = "";
-            while((daRestituire = fileDaLeggere.readLine())!=null){
+            while((daRestituire = fileDaLeggere.readLine())!=null){//BufferedReader fornisce il metodo readLine() che legge una stringa, ma non ha metodi per leggere, ad esempio, interi o double.
                 sb.append(daRestituire);
             }
         } catch (FileNotFoundException e){
             Log.e("errGestore", "File inesistente");
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();//printStackTrace è un metodo che visualizza un messaggio di errore nella console
         }
 
         return sb.toString();
@@ -29,7 +30,7 @@ public class Gestore {
 
     public String scriviFile(String nomeFile, Context c){
         String esito;
-        FileOutputStream fileO;
+        FileOutputStream fileO; //OutputStream è una classe astratta che rappresenta l'output di scrittura
         try {
             String str = "Questo è il messaggio";
             fileO = c.openFileOutput(nomeFile,
